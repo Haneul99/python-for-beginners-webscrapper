@@ -11,5 +11,5 @@ pages = pagination.find_all('a')
 spans = []
 for page in pages:
     spans.append(page.find("span"))
-spans = spans[:-1]
+spans = spans[:-1] #-1은 마지막 idx 전까지를 의미함. 0:-1 의 경우 0번째 idx부터 마지막 직전 idx까
 print(spans)
