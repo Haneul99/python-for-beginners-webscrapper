@@ -5,7 +5,7 @@ LIMIT = 50
 URL = f"https://www.indeed.com/jobs?q=python&limit={LIMIT}"
 
 
-def extract_indeed_pages():
+def extract_pages():
     result = requests.get(URL)
     soup = BeautifulSoup(result.text, "html.parser")
     pagination = soup.find("div", {"class": "pagination"})
@@ -47,3 +47,9 @@ def extract_indeed_jobs(last_page):
             job = extract_job(result)
             jobs.append(job)
     return jobs
+
+def get_jobs():
+    last_page = extract_pages()
+    indeed_jobs = extract_indeed_jobs(last_page)
+    return indeed_jobs
+
